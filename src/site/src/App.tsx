@@ -10,8 +10,6 @@ import { validate } from './api/validate'
 import {sha256} from 'js-sha256'
 import send from './api/send'
 
-import config from './utils/config'
-
 function App() {
 
     const [selectedFiles, setSelectedFiles] = useState()
@@ -21,11 +19,11 @@ function App() {
     const selectFileHandler = (event: any) => {
         const localFiles = event.target.files
         const localFileCount = event.target.files.length
-        if(localFileCount > config.MAX_FILE_COUNT) {
+        if(localFileCount > 30) {
             event.target.value = ''
             setSelectedFiles(undefined)
             setFileCount(0)
-            toast("ERROR", `File count bigger than ${config.MAX_FILE_COUNT}! Clearing input...`)
+            toast("ERROR", `File count bigger than 30! Clearing input...`)
         } else {
             setSelectedFiles(localFiles)
             setFileCount(localFileCount)
@@ -34,6 +32,7 @@ function App() {
 	}
 
     const clearApiKeyInput = (event: any) => {
+        console.log(process.env)
         if(apiKeyInputValue !== '') {
             setApiKeyInputValue("")
             toast("SUCCESS", `Cleared input!`)
@@ -60,7 +59,7 @@ function App() {
     const handleSend = async (event: any) => {
         if(!selectedFiles) return toast("ERROR", "No files selected!")
         const list: FileList = selectedFiles
-        if(list.length > config.MAX_FILE_COUNT) return toast("ERROR", `File limit exceeded! (Max ${config.MAX_FILE_COUNT})`)
+        if(list.length > 30) return toast("ERROR", `File limit exceeded! (Max 30)`)
 
         const [bases, skips] = fileListToBase64(list, 8)
         const exts = getFileExtensions(list, skips)

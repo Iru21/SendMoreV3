@@ -2,9 +2,8 @@ import { MessageAttachment, Client, TextChannel } from 'discord.js'
 import fs from 'fs'
 import fsExtra from 'fs-extra'
 import d from './dir'
-import config from './config'
 export default async function sender(client: Client) {
-    const channel = client.guilds.cache.get(config.SEND_LOCATION.GUILD)!.channels.cache.get(config.SEND_LOCATION.CHANNEL) as TextChannel
+    const channel = client.guilds.cache.get(process.env.GUILD!)!.channels.cache.get(process.env.CHANNEL!) as TextChannel
     if(!channel) return
     const images: [MessageAttachment[], MessageAttachment[], MessageAttachment[]] = [[], [], []]
     const files = await fs.readdirSync(d('../temp/'))

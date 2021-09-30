@@ -5,20 +5,18 @@ import client from './bot'
 import fs from 'fs'
 import sender from './sender'
 import d from './dir'
-import config from './config'
-
 const router = Router()
 
 router.get('/', async (req: Request, res: Response, next: NextFunction) => {
     return res.status(200).send("Server is on!")
 })
 
-router.post('validate', async (req: Request, res: Response, next: NextFunction) => {
+router.post('/validate', async (req: Request, res: Response, next: NextFunction) => {
     if(!verify(req.headers.authorization)) return res.status(200).send(false)
     else return res.status(200).send(true)
 })
 
-router.post('send', async (req: Request, res: Response, next: NextFunction) => {
+router.post('/send', async (req: Request, res: Response, next: NextFunction) => {
     if(!verify(req.headers.authorization)) return res.status(401).send("Invalid API key!")
     if(!req.body?.hashes) return res.status(400).send("Missing hash string!")
     if(!req.body?.exts) return res.status(400).send("Missing extentions!")
@@ -35,7 +33,7 @@ router.post('send', async (req: Request, res: Response, next: NextFunction) => {
 
 function verify(s = "empty") {
     s = s.replace("key ", "")
-    return (s == sha256(config.API_KEY))
+    return (s == sha256(process.env.API_KEY!))
 }
 
 export { router }

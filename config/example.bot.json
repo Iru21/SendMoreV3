@@ -1,9 +1,0 @@
-{
-    "BOT_TOKEN": "",
-    "BATCH_FILE_SIZE_LIMIT": "",
-    "API_KEY": "",
-    "SEND_LOCATION": {
-        "GUILD": "",
-        "CHANNEL": ""
-    }
-}
