@@ -1,1 +1,1 @@
-podman run -d --restart always -p 19713:19713 -p 2137:2137 localhost/sendmore
+docker run -d --restart always -p 19713:19713 -p 2137:2137 localhost/sendmore

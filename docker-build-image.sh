@@ -1,1 +1,1 @@
-podman build -t sendmore .
+docker build -t sendmore .
