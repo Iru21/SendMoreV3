@@ -1,5 +1,5 @@
 FROM alpine:3.14
-EXPOSE 3000/tcp
+EXPOSE 19713/tcp
 EXPOSE 2137/tcp
 ADD src/ /home
 WORKDIR /home
