@@ -6,7 +6,7 @@ WORKDIR /home
 RUN apk add --no-cache npm yarn nodejs-current
 RUN npm i -g concurrently ts-node
 RUN npm i
-RUN cd site
+WORKDIR /home/site
 RUN yarn install
-RUN cd ..
+WORKDIR /home
 ENTRYPOINT npm start
