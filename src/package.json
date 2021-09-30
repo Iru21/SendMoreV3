@@ -1,0 +1,36 @@
+{
+  "name": "sendmore",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./build/index.js",
+  "scripts": {
+    "clear-dist": "rmdir /s /q build",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "bot": "nodemon ./bot/index.ts",
+    "site": "npm start --prefix site",
+    "start": "concurrently \"npm run site\" \"npm run bot\""
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/fs-extra": "^9.0.13",
+    "@types/morgan": "^1.9.3",
+    "@types/node": "^16.7.6",
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.13",
+    "typescript": "^4.3.5"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "discord.js": "^13.1.0",
+    "express": "^4.17.1",
+    "fs-extra": "^10.0.0",
+    "js-sha256": "^0.9.0",
+    "morgan": "^1.10.0"
+  }
+}

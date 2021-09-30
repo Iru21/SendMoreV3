@@ -1,0 +1,8 @@
+src/node_modules
+src/site/node_modules
+src/package-lock.json
+src/site/yarn.lock
+config/bot.json
+config/site.json
+config/shared.json
+.vscode

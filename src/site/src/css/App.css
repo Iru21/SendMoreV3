@@ -1,0 +1,180 @@
+*:focus:not(:focus-visible) {
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
+.App {
+    text-align: center;
+    background-color: #282c34;
+    color: white;
+    min-height: 100vh;
+    width: 100%;
+    height: 100%;
+}
+
+.App-header {
+    background-color: #363a44;
+    max-height: 8vh;
+    min-height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    width: 100%;
+}
+
+#hl {
+    width: 6vh;
+}
+.content {
+    margin: 30px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.resetApiKeyButton {
+    display: inline-block;
+    padding: 17px 30px;
+    cursor: pointer;
+    border-radius: 30px;
+    background-color: rgba(255, 116, 144, 1);
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    border-width: 0px;
+}
+
+.resetApiKeyWrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2e3138;
+    border-radius: 30px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #575c68;
+    padding: 20px;
+    min-width: 25vw;
+    min-height: 80px;
+    margin: 30px;
+}
+
+.sendButton {
+    display: inline-block;
+    padding: 17px 30px;
+    cursor: pointer;
+    border-radius: 30px;
+    background-color: rgba(255, 116, 144, 1);
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    border-width: 0px;
+}
+
+.sendWrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2e3138;
+    border-radius: 30px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #575c68;
+    padding: 20px;
+    min-width: 25vw;
+    min-height: 80px;
+    margin: 30px;
+}
+
+.apiKeyWrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2e3138;
+    border-radius: 30px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #575c68;
+    padding: 20px;
+    min-width: 25vw;
+    min-height: 80px;
+    margin: 30px;
+}
+
+.pickerWrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2e3138;
+    border-radius: 30px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #575c68;
+    padding: 20px;
+    min-width: 25vw;
+    min-height: 80px;
+    margin: 30px;
+}
+
+.apiKeyInput {
+    border-radius: 30px;
+    border-width: 0px;
+    background-color: rgba(255, 116, 144, 1);
+    color: white;
+}
+
+.clearApiKeyInput {
+    border-radius: 30px;
+    border-width: 0px;
+    background-color: rgba(255, 116, 144, 1);
+    margin-left: 10px;
+    color: white;
+    
+}
+
+#fc {
+    display: inline-block;
+    white-space: nowrap;
+    margin-left: 10px;
+}
+
+.picker {
+    position: absolute;
+    z-index: -1;
+    top: 10px;
+    left: 8px;
+    font-size: 17px;
+    visibility: hidden;
+}
+
+.clearFileInput {
+    border-radius: 30px;
+    border-width: 0px;
+    background-color: rgba(255, 116, 144, 1);
+    margin-right: 10px;
+    color: white;
+    width: 30px;
+    height: 30px;
+}
+
+.pickerButton {
+    display: inline-block;
+    padding: 17px 30px;
+    cursor: pointer;
+    border-radius: 30px;
+    background-color: rgba(255, 116, 144, 1);
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.pickerButton:hover {
+    background-color: rgb(199, 86, 109);
+}
+
