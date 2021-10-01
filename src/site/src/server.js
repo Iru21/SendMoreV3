@@ -4,19 +4,46 @@ const { spawn } = require('child_process')
 const { networkInterfaces } = require('os')
 const fs = require('fs')
 const publicIp = require('public-ip')
+const interfaces = ["Ethernet", "Wi-Fi", "eth", "wlan", "enp", "ens"]
 
 async function writeIpToFile() {
     const lIp = getLocalIP()
     const pIp = await getPublicIp()
+    if(!lIp) {
+        logInterfaces()
+        console.log("Current added interfaces:")
+        console.log(interfaces)
+        console.log("")
+        console.log("Could not get local IP adress of the host machine! We have written your network interfaces containing IPv4 adresses and currently added ones, please make a pull request to add yours to the list :)")
+        throw new Error()
+    }
     console.log([lIp, pIp])
     const content = "REACT_APP_API_P=" + pIp + "\nREACT_APP_API_L=" + lIp
     await fs.writeFileSync(".env", content)
     build()
 }
 
+function logInterfaces() {
+    const n = networkInterfaces();
+    const r = {}
+
+    for (const _ of Object.keys(n)) {
+        for (const w of n[_]) {
+            if (w.family === 'IPv4' && !w.internal) {
+                if (!r[_]) {
+                    r[_] = [];
+                }
+                r[_].push(w.address);
+            }
+        }
+    }
+    console.log("")
+    console.log(r)
+    console.log("")
+}
+
 function getLocalIP() {
     const nets = networkInterfaces();
-    const interfaces = ["Ethernet", "Wi-Fi", "eth", "wlan", "enp", "ens"]
     const names = Object.keys(nets)
     let net = undefined
     for(let i = 0; i < names.length; i++) {
