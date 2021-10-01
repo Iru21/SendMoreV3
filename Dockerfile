@@ -9,4 +9,5 @@ RUN npm i
 WORKDIR /home/site
 RUN yarn install
 WORKDIR /home
+RUN mkdir temp
 ENTRYPOINT npm start
