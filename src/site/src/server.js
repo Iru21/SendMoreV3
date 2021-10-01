@@ -16,7 +16,17 @@ async function writeIpToFile() {
 
 function getLocalIP() {
     const nets = networkInterfaces();
-    return nets.Ethernet?.filter(e => e.family == "IPv4")[0].address || nets["Wi-Fi"]?.filter(e => e.family == "IPv4")[0].address
+    const interfaces = ["Ethernet", "Wi-Fi", "eth", "wlan", "enp", "ens"]
+    const names = Object.keys(nets)
+    let net = undefined
+    for(let i = 0; i < names.length; i++) {
+        for(let j = 0; j < interfaces.length; j++) {
+            if(names[i].includes(interfaces[j])) {
+                net = nets[names[i]]?.filter(e => e.family == "IPv4")[0].address
+            }
+        }
+    }
+    return net
 }
 
 async function getPublicIp() {
@@ -25,7 +35,7 @@ async function getPublicIp() {
 
 function build() {
     const builder = spawn(/^win/.test(process.platform) ? 'npm.cmd' : 'npm', ['run', "build"])
-    console.log(builder.spawnargs.join(" "))
+    console.log("[BUILDER] [RUNNING] " + builder.spawnargs.join(" "))
     builder.stderr.on("data", data => {if(data.toString().length != 0) console.log("[BUILDER] [ERR] " + data.toString())})
     builder.stdout.on("data", data => {if(data.toString().length != 0) console.log("[BUILDER] [INFO] " + data.toString())})
     builder.on("close", (code) => {
