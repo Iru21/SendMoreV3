@@ -10,8 +10,6 @@ import { validate } from './api/validate'
 import {sha256} from 'js-sha256'
 import send from './api/send'
 
-console.log(process.env)
-
 function App() {
 
     const [selectedFiles, setSelectedFiles] = useState()

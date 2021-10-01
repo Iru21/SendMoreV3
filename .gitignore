@@ -1,5 +1,6 @@
 src/node_modules
 src/site/node_modules
 src/.env
+src/site/.env
 src/site/build
 .vscode
