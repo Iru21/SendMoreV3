@@ -4,12 +4,11 @@
   "description": "",
   "main": "./build/index.js",
   "scripts": {
-    "clear-dist": "rmdir /s /q build",
-    "build": "tsc",
-    "watch": "tsc -w",
     "bot": "nodemon ./bot/index.ts",
     "site": "npm start --prefix site",
-    "start": "concurrently \"npm run site\" \"npm run bot\""
+    "site-dev": "npm run dev --prefix site",
+    "start": "concurrently \"npm run site\" \"npm run bot\"",
+    "dev": "concurrently \"npm run site-dev\" \"npm run bot\""
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",

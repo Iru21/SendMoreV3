@@ -8,7 +8,7 @@ import d from './dir'
 const router = Router()
 
 router.get('/', async (req: Request, res: Response, next: NextFunction) => {
-    return res.status(200).send("Server is on!")
+    return res.status(200).send(true)
 })
 
 router.post('/validate', async (req: Request, res: Response, next: NextFunction) => {

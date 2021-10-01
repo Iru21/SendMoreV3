@@ -1,0 +1,10 @@
+{
+    "ignore": [
+        "build/*",
+        ".env"
+    ],
+    "watch": [
+        "src/**/*"
+    ],
+    "ext": "ts,js,tsx,json"
+}

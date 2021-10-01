@@ -15,5 +15,5 @@ app.use(bodyParser.json({limit: process.env.BATCH_FILE_SIZE_LIMIT}))
 app.use(router)
 
 app.listen(19713, () => {
-    console.log("Listening on port 19713!")
+    console.log("Bot and API on port 19713!")
 })
