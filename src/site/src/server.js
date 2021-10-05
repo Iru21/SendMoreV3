@@ -41,15 +41,19 @@ function logInterfaces() {
     console.log("")
 }
 
-function getLocalIP() {
+function getLocalIP(d = false) {
     const nets = networkInterfaces();
     const names = Object.keys(nets)
     let net = undefined
-    for(let i = 0; i < names.length; i++) {
-        for(let j = 0; j < interfaces.length; j++) {
+    let found = false
+    for(let i = 0; i < names.length && !found; i++) {
+        for(let j = 0; j < interfaces.length && !found; j++) {
+            if(d) console.log(`${names[i]} -> ${interfaces[j]}`)
             if(names[i].includes(interfaces[j])) {
                 const _in = nets[names[i]]?.filter(e => e.family == "IPv4" && !e.internal)[0]
+                if(d) console.log(_in)
                 net = _in?.address
+                found = true
             }
         }
     }
