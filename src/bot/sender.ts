@@ -1,31 +1,20 @@
-import { MessageAttachment, Client, TextChannel } from 'discord.js'
-import fs from 'fs'
-import fsExtra from 'fs-extra'
+import { Client, TextChannel } from 'discord.js'
 import d from './dir'
-export default async function sender(client: Client) {
+export default async function sender(client: Client, urls: string[]) {
     const channel = client.guilds.cache.get(process.env.GUILD!)!.channels.cache.get(process.env.CHANNEL!) as TextChannel
-    if(!channel) return
-    const images: [MessageAttachment[], MessageAttachment[], MessageAttachment[]] = [[], [], []]
-    const files = await fs.readdirSync(d('../temp/'))
+    if(!channel) throw new Error(`Channel with ID(${process.env.CHANNEL}) in guild with ID(${process.env.GUILD}) was not found!`)
+    const images: [ string[],  string[], string[], string[], string[]] = [[], [], [], [], []]
     let w = 0
-    for(let i = 0; i < files.length; i++) {
-        if(images[w].length == 10) w++
-        const atta = new MessageAttachment(d('../temp/') + files[i])
-        atta.name = files[i]
-        images[w].push(atta)
+    for(let i = 0; i < urls.length; i++) {
+        if(images[w].length == 5) w++
+        images[w].push(urls[i])
     }
     for(let i = 0; i < images.length; i++) {
-        if(images[i].length != 0) setTimeout(()=>{
-            channel.send(
-                {
-                    files: [
-                        ...images[i]
-                    ]
-                }
-            )
-        }, 2000)
+        if(images[i].length != 0) {
+            setTimeout(()=>{
+                channel.send(`${images[i].join(`\n`)}`)
+            }, 500)
+        }
     }
-    setTimeout(() => {
-        fsExtra.emptyDirSync(d('../temp/'))
-    }, images.length * 3000)
+    console.log(`Successfully sent ${urls.length} files!`)
 }

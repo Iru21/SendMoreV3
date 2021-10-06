@@ -4,11 +4,12 @@ import { randomBytes } from 'crypto'
 import client from './bot'
 import fs from 'fs'
 import sender from './sender'
+import uploader from './uploader'
 import d from './dir'
 const router = Router()
 
 router.get('/', async (req: Request, res: Response, next: NextFunction) => {
-    return res.status(200).send(true)
+    return res.status(200)
 })
 
 router.post('/validate', async (req: Request, res: Response, next: NextFunction) => {
@@ -26,7 +27,7 @@ router.post('/send', async (req: Request, res: Response, next: NextFunction) => 
         fs.writeFile(d(`../temp/${randomBytes(5).toString('hex')}.${exts[i]}`), hashes[i], "base64", () => {/*ignore*/})
     }
     setTimeout(() => {
-        sender(client)
+        uploader(client)
     }, exts.length * 1000)
     return res.status(200).send("Success!")
 })

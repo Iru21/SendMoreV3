@@ -11,7 +11,7 @@ import {router} from "./router"
 
 app.use(cors({origin: "*", optionsSuccessStatus: 200}))
 app.use(logger('dev'))
-app.use(bodyParser.json({limit: process.env.BATCH_FILE_SIZE_LIMIT}))
+app.use(bodyParser.json())
 app.use(router)
 
 app.listen(19713, () => {

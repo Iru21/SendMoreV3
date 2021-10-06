@@ -27,7 +27,7 @@ function App() {
         } else {
             setSelectedFiles(localFiles)
             setFileCount(localFileCount)
-            toast("SUCCESS", `Successfull selection! ${localFileCount} file${localFileCount !== 1 ? "s" : ""} selected.`)
+            if(localFileCount != 0) toast("SUCCESS", `Successfull selection! ${localFileCount} file${localFileCount !== 1 ? "s" : ""} selected.`)
         }
 	}
 

@@ -70,7 +70,7 @@ function build() {
     builder.stderr.on("data", data => {if(data.toString().length != 0) console.log("[BUILDER] [ERR] " + data.toString())})
     builder.stdout.on("data", data => {if(data.toString().length != 0) console.log("[BUILDER] [LOG] " + data.toString())})
     process.once('SIGINT', () => {
-        if(!builder.killed) {
+        if(!builder.connected) {
             console.log("[BUILDER] [INFO] Aborting... [CODE SIGINT]")
             builder.kill('SIGINT') 
         }
