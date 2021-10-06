@@ -8,6 +8,7 @@ import d from './dir'
 const router = Router()
 
 const client = new Bot()
+client.start()
 
 router.get('/', async (req: Request, res: Response, next: NextFunction) => {
     return res.status(200)
