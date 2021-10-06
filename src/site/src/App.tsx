@@ -60,7 +60,7 @@ function App() {
         const list: FileList = selectedFiles
         if(list.length > 30) return toast("ERROR", `File limit exceeded! (Max 30)`)
 
-        const [bases, skips] = fileListToBase64(list, 8)
+        const [bases, skips] = fileListToBase64(list, 200)
         const exts = getFileExtensions(list, skips)
 
         const apiKey = localStorage.getItem('DS-api-key-wwx')
