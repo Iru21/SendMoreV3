@@ -1,12 +1,13 @@
 import { Router, Request, Response, NextFunction } from 'express'
 import { sha256 } from 'js-sha256'
 import { randomBytes } from 'crypto'
-import client from './bot'
+import Bot from './bot'
 import fs from 'fs'
-import sender from './sender'
 import uploader from './uploader'
 import d from './dir'
 const router = Router()
+
+const client = new Bot()
 
 router.get('/', async (req: Request, res: Response, next: NextFunction) => {
     return res.status(200)

@@ -7,8 +7,8 @@
     "bot": "nodemon ./bot/index.ts",
     "site": "npm start --prefix site",
     "site-dev": "npm run dev --prefix site",
-    "start": "concurrently \"npm run site\" \"npm run bot\"",
-    "dev": "concurrently \"npm run site-dev\" \"npm run bot\""
+    "start": "concurrently -k \"npm run site\" \"npm run bot\"",
+    "dev": "concurrently -k \"npm run site-dev\" \"npm run bot\""
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
@@ -24,6 +24,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "catbox.moe": "^1.0.2",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "discord.js": "^13.1.0",
